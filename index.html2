@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+set -e
+
+REPO_NAME="FelizCumple-Emy"
+VISIBILITY="public" # public o private
+DESCRIPTION="Poema y mensaje de cumpleaños para Emy en GitHub."
+
+command -v gh >/dev/null 2>&1 || { echo "Falta 'gh' (GitHub CLI). Instálalo y corre 'gh auth login'."; exit 1; }
+command -v git >/dev/null 2>&1 || { echo "Falta 'git'. Instálalo primero."; exit 1; }
+
+if [ -d "$REPO_NAME" ]; then
+  echo "La carpeta '$REPO_NAME' ya existe. Elige otro nombre o bórrala."
+  exit 1
+fi
+
+mkdir "$REPO_NAME"
+cd "$REPO_NAME"
+
+cat > README.md << 'EOF'
+# 🎂 Feliz cumpleaños, Emy
+
+## Poema para Emy
+En el cielo de los días grises,  
+hay una estrella que nunca se apaga,  
+y aunque la distancia a veces parezca un muro,  
+su luz siempre logra atravesarlo.
+
+Eres esa melodía que no necesita letra,  
+porque basta con escucharte para entender la calma.  
+Tienes la magia de convertir un instante cualquiera  
+en algo que merece ser guardado para siempre.
+
+No eres solo increíble,  
+eres la pausa que da respiro,  
+el color que rompe la rutina,  
+y la chispa que hace que todo parezca posible.
+
+Si la vida fuera un libro,  
+habría capítulos que perderían sentido sin tu nombre.  
+Y si fuera un camino,  
+serías esa señal que indica que vamos en la dirección correcta.
+
+---
+
+## Mensaje para Emy
+Emy, hoy no es solo tu cumpleaños,  
+es un recordatorio para todos los que te conocemos  
+de la suerte que tenemos de cruzarnos contigo.
+
+Quiero que sepas que eres mucho más que los días buenos y las risas que compartes.  
+Eres fuerza en los días difíciles,  
+alegría en los momentos pequeños,  
+y esa persona que, sin proponérselo,  
+marca una diferencia real en la vida de los demás.
+
+Me alegra que seas parte de mi historia,  
+y aunque a veces no te lo diga, valoro todo lo que eres:  
+tu forma de ver las cosas, tu manera de cuidar,  
+y esa luz que, aunque tú no siempre lo notes,  
+inspira a quienes te rodean.
+
+Deseo que este nuevo año esté lleno de caminos que te lleven a lo que sueñas,  
+que encuentres más razones para sonreír que para preocuparte,  
+y que nunca olvides que tu valor no depende de lo que hagas,  
+sino de quién eres.
+
+**Feliz cumpleaños, Emy ❤️**  
+Que hoy sea el inicio de un año tan especial como tú.
+EOF
+
+git init
+git add README.md
+git commit -m "feat: regalo para Emy (poema y mensaje)"
+
+gh repo create "$REPO_NAME" --"$VISIBILITY" --description "$DESCRIPTION" --source "." --remote "origin" --push
+
+echo
+echo "Listo ✅ Se creó y subió el repositorio '$REPO_NAME'."
