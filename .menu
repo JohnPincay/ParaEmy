@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Para ti 🌼</title>
+<style>
+body {
+  background-color: #fff8dc;
+  text-align: center;
+  font-family: Arial;
+}
+.carta {
+  margin-top: 100px;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>🌼 Para ti 🌼</h1>
+
+<div class="carta">
+<p>No sabía cómo decir esto...</p>
+<p>pero me gusta cómo eres conmigo...</p>
+<p>y cómo haces especiales hasta cosas simples...</p>
+<p>como “el de los tamales” 💛</p>
+<p>— Con cariño</p>
+</div>
+
+</body>
+</html>
